@@ -42,11 +42,13 @@ export class VisionPage {
     // Show loader
     this.loading.present();
 
-    const timestamp = new Date().getTime().toString();
-    const path = `${timestamp}.jpg`;
+    // const timestamp = new Date().getTime().toString();
+    const docId = this.afs.createId();
+
+    const path = `${docId}.jpg`;
 
     // Make a reference to the future location of the firestore document
-    const photoRef = this.afs.collection('photos').doc(timestamp)
+    const photoRef = this.afs.collection('photos').doc(docId)
     
     // Firestore observable
     this.result$ = photoRef.valueChanges()
