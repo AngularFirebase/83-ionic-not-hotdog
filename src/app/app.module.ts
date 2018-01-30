@@ -16,12 +16,7 @@ import { Camera } from '@ionic-native/camera';
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAc9Tt8pQQF3ntu2Tz66iUKl_fXHtdhIyc',
-  authDomain: 'firestarter-96e46.firebaseapp.com',
-  databaseURL: 'https://firestarter-96e46.firebaseio.com',
-  storageBucket: 'firestarter-96e46-vision',
-  messagingSenderId: '581326886241',
-  projectId: 'firestarter-96e46'
+ // config
 }
 
 @NgModule({
