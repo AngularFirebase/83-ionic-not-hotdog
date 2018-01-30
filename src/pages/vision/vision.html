@@ -17,34 +17,43 @@
 <ion-content padding>
   <ion-row>
 
-      <ion-col col-12 text-center>
+    <ion-col col-12 text-center>
 
-          <progress *ngIf="progress | async as pct"
-                    [value]="pct" 
-                    max="100">        
-          </progress> 
-
-        <ion-fab>
-            <button ion-fab (tap)="getImage()"><ion-icon name="add"></ion-icon></button>
-        </ion-fab>
-
-          <!-- <input type="file" accept="image/*;capture=camera" (change)="log($event)">
-          <button (click)="log($event.target.files)">Test</button> -->
-
+      <button ion-button icon-start (tap)="captureAndUpload()">
+        <ion-icon name="camera"></ion-icon>
+        Activate Cloud Vision
+      </button>
 
     </ion-col>
 
     <ion-col col-12>
-        <img width="100%" height="auto" [src]="'data:image/jpg;base64,' + image">
+        <img width="100%" height="auto" [src]="image">
     </ion-col>
 
-    <ion-col *ngIf="labels$ | async as labels">
+    <ion-col *ngIf="result$ | async as result">
 
-            <img [src]="image" width="100px">
+      <h3>Hotdog?</h3>
 
-            <h3>Labels</h3>
+      <button *ngIf="result.hotdog"
+                color="secondary"ion-button full>
 
-            <button ion-button full *ngFor="let label of labels.labels">{{ label }}</button>
+        Hotdog!!!
+      </button>
+
+      <button *ngIf="!result.hotdog"
+                color="danger"ion-button full>
+      
+        Not Hotdog :)
+      </button>
+
+      <h3>Labels</h3>
+
+      <ion-chip color="secondary"
+              *ngFor="let label of result.labels">
+              
+              <ion-label>{{ label }}</ion-label>
+            
+      </ion-chip>
         
     </ion-col>
   </ion-row>
